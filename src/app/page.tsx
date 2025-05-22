@@ -4,6 +4,7 @@ import EmpCard from "./components/EmpCard";
 import CompanyCard from "./components/CompanyCard";
 import AIMatchingCard from "./components/AiMatchCard";
 import TestimonialCards from "./components/TestimonialCards";
+import Footer from "./components/Footer"
 
 
 export default function Home() {
@@ -273,6 +274,19 @@ export default function Home() {
                 boxShadow: '0 4px 24px rgba(103,58,183,0.04)',
                 border: '1px solid rgba(103,58,183,0.07)',
                 background: '#fff',
+                transition: 'all 0.3s ease-in-out',
+                transform: 'perspective(1000px) rotateX(0) rotateY(0)',
+                '&:hover': {
+                  transform: 'perspective(1000px) rotateX(2deg) rotateY(5deg)',
+                  boxShadow: '0 20px 40px rgba(103,58,183,0.15)',
+                  translateY: '-8px',
+                },
+                '@keyframes float': {
+                  '0%': { transform: 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)' },
+                  '50%': { transform: 'perspective(1000px) rotateX(2deg) rotateY(-2deg) translateZ(10px)' },
+                  '100%': { transform: 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)' },
+                },
+                animation: 'float 6s ease-in-out infinite',
               }}>
                 <Typography variant="h5" fontWeight={700} sx={{ mb: 1.5 }}>For Job Seekers</Typography>
                 <Typography color="text.secondary" sx={{ mb: 3 }}>
@@ -298,6 +312,11 @@ export default function Home() {
                         fontWeight: 700,
                         fontSize: 18,
                         boxShadow: '0 2px 8px rgba(103,58,183,0.10)',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          transform: 'scale(1.1) rotate(5deg)',
+                          boxShadow: '0 4px 12px rgba(103,58,183,0.20)',
+                        }
                       }}>{`0${idx+1}`}</Box>
                       <Typography>{item}</Typography>
                     </Box>
@@ -315,6 +334,20 @@ export default function Home() {
                 boxShadow: '0 4px 24px rgba(103,58,183,0.04)',
                 border: '1px solid rgba(103,58,183,0.07)',
                 background: '#fff',
+                transition: 'all 0.3s ease-in-out',
+                transform: 'perspective(1000px) rotateX(0) rotateY(0)',
+                '&:hover': {
+                  transform: 'perspective(1000px) rotateX(2deg) rotateY(-5deg)',
+                  boxShadow: '0 20px 40px rgba(41,121,255,0.15)',
+                  translateY: '-8px',
+                },
+                '@keyframes float2': {
+                  '0%': { transform: 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)' },
+                  '50%': { transform: 'perspective(1000px) rotateX(2deg) rotateY(2deg) translateZ(10px)' },
+                  '100%': { transform: 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)' },
+                },
+                animation: 'float2 6s ease-in-out infinite',
+                animationDelay: '0.5s',
               }}>
                 <Typography variant="h5" fontWeight={700} sx={{ mb: 1.5 }}>For Recruiters</Typography>
                 <Typography color="text.secondary" sx={{ mb: 3 }}>
@@ -340,6 +373,11 @@ export default function Home() {
                         fontWeight: 700,
                         fontSize: 18,
                         boxShadow: '0 2px 8px rgba(41,121,255,0.10)',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          transform: 'scale(1.1) rotate(-5deg)',
+                          boxShadow: '0 4px 12px rgba(41,121,255,0.20)',
+                        }
                       }}>{`0${idx+1}`}</Box>
                       <Typography>{item}</Typography>
                     </Box>
@@ -369,6 +407,114 @@ export default function Home() {
         </Box>
       </Container>
     </Box>
+
+    {/* CTA Section */}
+    <Box
+      sx={{
+        minHeight: "70vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "linear-gradient(120deg, #f8f6ff 60%, #e6eaff 100%)",
+        px: { xs: 2, md: 8 },
+        py: { xs: 8, md: 12 },
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          width: "100%",
+          maxWidth: 1100,
+          borderRadius: 5,
+          p: { xs: 3, md: 8 },
+          background: "linear-gradient(120deg, #f8faff 60%, #ede7ff 100%)",
+          boxShadow: "0 8px 32px rgba(103,58,183,0.08)",
+          textAlign: "center",
+        }}
+      >
+        <Typography
+          variant="h3"
+          fontWeight={700}
+          sx={{
+            mb: 2,
+            lineHeight: 1.15,
+            fontSize: { xs: "2rem", md: "2.8rem" },
+          }}
+        >
+          Ready to transform your{" "}
+          <Box component="span" sx={{ color: "#7c4dff" }}>
+            hiring
+          </Box>{" "}
+          or{" "}
+          <Box component="span" sx={{ color: "#7c4dff" }}>
+            job search
+          </Box>
+          ?
+        </Typography>
+        <Typography
+          variant="h6"
+          color="text.secondary"
+          sx={{
+            mb: 4,
+            maxWidth: 700,
+            mx: "auto",
+            fontWeight: 400,
+          }}
+        >
+          Join thousands of job seekers and recruiters who have found success on our platform.
+          <br />
+          Create your account today and experience the difference.
+        </Typography>
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={2}
+          justifyContent="center"
+          sx={{ mb: 3 }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            sx={{
+              borderRadius: 2,
+              fontWeight: 700,
+              minWidth: 200,
+              fontSize: "1.1rem",
+              boxShadow: "none",
+              background: "#7c4dff",
+              "&:hover": { background: "#651fff" },
+            }}
+          >
+            Get started for free
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            sx={{
+              borderRadius: 2,
+              fontWeight: 500,
+              minWidth: 200,
+              fontSize: "1.1rem",
+              background: "#fff",
+              borderColor: "#ede7ff",
+              "&:hover": { background: "#f3f0ff" },
+            }}
+          >
+            Learn more
+          </Button>
+        </Stack>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ mt: 2, fontWeight: 400 }}
+        >
+          No credit card required. Free for individual users.
+        </Typography>
+      </Paper>
+    </Box>
+
+    <Footer />
     </Box>
   );
 }
