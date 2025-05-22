@@ -1,11 +1,43 @@
-import { Box, Button, Paper, Stack, Typography, Avatar, Container } from "@mui/material";
+import { Box, Button, Paper, Stack, Typography, Container } from "@mui/material";
 import Navbar from "./components/Navbar";
 import EmpCard from "./components/EmpCard";
 import CompanyCard from "./components/CompanyCard";
 import AIMatchingCard from "./components/AiMatchCard";
+import TestimonialCards from "./components/TestimonialCards";
 
 
 export default function Home() {
+  // Temporary testimonials data
+  const testimonials = [
+    {
+      rating: 5,
+      review: "JobMatch completely transformed how we find technical talent. The quality of candidates and the efficiency of the matching process is exceptional.",
+      name: "Sarah Johnson",
+      title: "CTO at TechSolutions",
+      type: "Recruiter",
+    
+      
+    },
+    {
+      rating: 5,
+      review: "I found my dream job within two weeks of creating my profile. The consent-based approach meant I only talked to companies I was genuinely interested in.",
+      name: "Michael Chen",
+      title: "Full Stack Developer",
+      type: "Job Seeker",
+    
+      
+    },
+    {
+      rating: 5,
+      review: "I found my dream job within two weeks of creating my profile. The consent-based approach meant I only talked to companies I was genuinely interested in.",
+      name: "Michael Chen",
+      title: "Full Stack Developer",
+      type: "Job Seeker",
+    
+      
+    },
+  ];
+
   return (
     <Box>
       <Navbar />
@@ -110,7 +142,20 @@ export default function Home() {
             perspective: '1000px',
           }}>
             <EmpCard />
-            <CompanyCard />
+            <CompanyCard 
+              name="TechCorp Inc."
+              industry="AI & Machine Learning"
+              location="San Francisco, CA"
+              positions={["Frontend", "ML Engineer", "DevOps"]}
+              review="We've hired 5 amazing developers through ANT in last 3 months!"
+              avatarGrp={[
+                "/static/images/avatar/1.png",
+                "/static/images/avatar/2.png",
+                "/static/images/avatar/3.png",
+                "/static/images/avatar/4.png"
+              ]}
+              rating={5}
+            />
             <AIMatchingCard />
           </Box>
         </Box>
@@ -125,49 +170,135 @@ export default function Home() {
         }}
       >
         <Container maxWidth="lg">
+
           {/* Section Header */}
           <Box sx={{ textAlign: 'center', mb: 8 }}>
             <Typography variant="h2" sx={{ mb: 2 }}>
-              A <Box component="span" color="primary.main">smarter</Box> way to connect
+              Why Choose <Box component="span" color="primary.main">ANT</Box>?
             </Typography>
             <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 700, mx: 'auto' }}>
-              Our platform brings together tech talent and employers in a transparent, efficient, and respectful process.
+              Discover the features that make our platform the smarter, faster, and more human way to connect talent with opportunity.
             </Typography>
           </Box>
 
           {/* Features Grid */}
-          <Box display="flex" gap={2}>
-            <Box flex={1}>
-              <Paper 
-                elevation={0} 
-                sx={{ 
-                  p: 4, 
-                  height: '100%', 
-                  borderRadius: 3,
-                  border: '1px solid rgba(0,0,0,0.05)',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    boxShadow: '0 8px 25px rgba(0,0,0,0.05)',
-                    transform: 'translateY(-5px)',
-                  }
-                }}
-              >
-                <Typography variant="h4" sx={{ mb: 3 }}>For Job Seekers</Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-                  Create a compelling profile to showcase your skills and experience.
-                </Typography>
+          <Box display="flex" gap={3} flexWrap="wrap" justifyContent="center">
+            {[
+              {
+                color: '#7c4dff',
+                title: 'AI-Powered Matching',
+                desc: 'Our proprietary ANT AI instantly connects recruiters with the most relevant, high-quality candidates, saving hours of manual searching.'
+              },
+              {
+                color: '#2979ff',
+                title: 'Handpick Top Talent',
+                desc: 'Recruiters can easily browse and select from a curated pool of skilled professionals, ensuring only the best fit for every role.'
+              },
+              {
+                color: '#651fff',
+                title: 'Faster Hiring, Lower Costs',
+                desc: 'Fill positions in record time and reduce hiring expenses with our efficient, targeted matching—no more long waiting periods or wasted resources.'
+              },
+              {
+                color: '#00bfae',
+                title: 'Empowered Job Seekers',
+                desc: 'Job seekers get matched to roles that truly fit their skills and ambitions, with full control over who can contact them.'
+              },
+              {
+                color: '#ff7043',
+                title: 'Privacy & Consent First',
+                desc: 'Communication only happens when both sides are interested, ensuring a respectful and spam-free experience for everyone.'
+              },
+              {
+                color: '#ffd600',
+                title: 'A Better Way to Find Work',
+                desc: 'Experience a platform designed for real results—more opportunities, less noise, and a smarter path to your next career move.'
+              }
+            ].map((feature, idx) => (
+              <Box key={idx} flex={{ xs: '1 1 100%', sm: '1 1 45%', md: '1 1 30%' }} minWidth={260} maxWidth={340} mb={4}>
+                <Paper elevation={0} sx={{
+                  p: 4,
+                  borderRadius: 4,
+                  height: '100%',
+                  boxShadow: '0 4px 24px rgba(103,58,183,0.04)',
+                  position: 'relative',
+                  textAlign: 'left',
+                  border: '1px solid rgba(103,58,183,0.07)',
+                }}>
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 24,
+                    left: 24,
+                    width: 40,
+                    height: 40,
+                    bgcolor: feature.color,
+                    color: '#fff',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontWeight: 700,
+                    fontSize: 20,
+                    boxShadow: '0 2px 8px rgba(103,58,183,0.10)',
+                  }}>{`0${idx+1}`}</Box>
+                  <Box sx={{ ml: 7 }}>
+                    <Typography variant="h6" fontWeight={700} sx={{ mb: 1, mt: 0.5 }}>{feature.title}</Typography>
+                    <Typography variant="body2" color="text.secondary">{feature.desc}</Typography>
+                  </Box>
+                </Paper>
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      </Box>
 
+      {/* How JobMatch feature Works Section */}
+      <Box id="working" sx={{ py: 10, background: 'linear-gradient(180deg, #f8f6ff 0%, #f3f2fa 100%)' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Typography variant="h2" sx={{ mb: 2 }}>
+              How ANT <Box component="span" color="primary.main" fontWeight={700}>works</Box>
+            </Typography>
+            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 700, mx: 'auto' }}>
+              See how our platform makes connecting talent and opportunity seamless for both job seekers and recruiters.
+            </Typography>
+          </Box>
+          <Box display="flex" flexWrap={{ xs: 'wrap', md: 'nowrap' }} gap={4} justifyContent="center">
+            {/* Job Seekers Card */}
+            <Box flex={1} minWidth={300}>
+              <Paper elevation={0} sx={{
+                p: 5,
+                borderRadius: 4,
+                height: '100%',
+                boxShadow: '0 4px 24px rgba(103,58,183,0.04)',
+                border: '1px solid rgba(103,58,183,0.07)',
+                background: '#fff',
+              }}>
+                <Typography variant="h5" fontWeight={700} sx={{ mb: 1.5 }}>For Job Seekers</Typography>
+                <Typography color="text.secondary" sx={{ mb: 3 }}>
+                  Find your next opportunity in just a few simple steps.
+                </Typography>
                 <Stack spacing={3}>
                   {[
-                    "Build a rich developer profile with GitHub integration",
-                    "Showcase your portfolio and top projects",
-                    "Control who contacts you with two-way consent",
-                    "Receive opportunities from top tech companies"
-                  ].map((item, index) => (
-                    <Box key={index} display="flex" alignItems="center" gap={2}>
-                      <Avatar sx={{ bgcolor: 'rgba(103, 58, 183, 0.1)', color: 'primary.main' }}>
-                        <Box component="span" sx={{ fontSize: '1rem' }}>✓</Box>
-                      </Avatar>
+                    'Create your profile with your skills and experience.',
+                    'Get matched instantly with roles that fit you.',
+                    'Review and accept opportunities from top companies.',
+                    'Communicate directly with recruiters—on your terms.'
+                  ].map((item, idx) => (
+                    <Box key={idx} display="flex" alignItems="center" gap={2}>
+                      <Box sx={{
+                        width: 32,
+                        height: 32,
+                        bgcolor: '#7c4dff',
+                        color: '#fff',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 700,
+                        fontSize: 18,
+                        boxShadow: '0 2px 8px rgba(103,58,183,0.10)',
+                      }}>{`0${idx+1}`}</Box>
                       <Typography>{item}</Typography>
                     </Box>
                   ))}
@@ -175,37 +306,41 @@ export default function Home() {
               </Paper>
             </Box>
 
-            <Box flex={1}>
-              <Paper 
-                elevation={0} 
-                sx={{ 
-                  p: 4, 
-                  height: '100%', 
-                  borderRadius: 3,
-                  border: '1px solid rgba(0,0,0,0.05)',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    boxShadow: '0 8px 25px rgba(0,0,0,0.05)',
-                    transform: 'translateY(-5px)',
-                  }
-                }}
-              >
-                <Typography variant="h4" sx={{ mb: 3 }}>For Recruiters</Typography>
-                <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-                  Find the perfect candidates based on skills, experience, and availability.
+            {/* Recruiters Card */}
+            <Box flex={1} minWidth={300}>
+              <Paper elevation={0} sx={{
+                p: 5,
+                borderRadius: 4,
+                height: '100%',
+                boxShadow: '0 4px 24px rgba(103,58,183,0.04)',
+                border: '1px solid rgba(103,58,183,0.07)',
+                background: '#fff',
+              }}>
+                <Typography variant="h5" fontWeight={700} sx={{ mb: 1.5 }}>For Recruiters</Typography>
+                <Typography color="text.secondary" sx={{ mb: 3 }}>
+                  Hire the best talent, faster and smarter.
                 </Typography>
-
                 <Stack spacing={3}>
                   {[
-                    "Advanced search with powerful filtering options",
-                    "View detailed developer profiles before reaching out",
-                    "Respect developer privacy with consent-based communication",
-                    "Track your candidate pipeline and interactions"
-                  ].map((item, index) => (
-                    <Box key={index} display="flex" alignItems="center" gap={2}>
-                      <Avatar sx={{ bgcolor: 'rgba(103, 58, 183, 0.1)', color: 'primary.main' }}>
-                        <Box component="span" sx={{ fontSize: '1rem' }}>✓</Box>
-                      </Avatar>
+                    'Post your open positions and requirements.',
+                    'Instantly see top-matched candidates via ANT AI.',
+                    'Handpick and connect with skilled professionals.',
+                    'Hire faster, with less effort and lower cost.'
+                  ].map((item, idx) => (
+                    <Box key={idx} display="flex" alignItems="center" gap={2}>
+                      <Box sx={{
+                        width: 32,
+                        height: 32,
+                        bgcolor: '#2979ff',
+                        color: '#fff',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 700,
+                        fontSize: 18,
+                        boxShadow: '0 2px 8px rgba(41,121,255,0.10)',
+                      }}>{`0${idx+1}`}</Box>
                       <Typography>{item}</Typography>
                     </Box>
                   ))}
@@ -215,6 +350,25 @@ export default function Home() {
           </Box>
         </Container>
       </Box>
+
+      {/* Testimonials Section */}
+      <Box id="testimonials" sx={{ py: 10, background: 'linear-gradient(180deg, #f8f6ff 0%, #f3f2fa 100%)' }}>
+      <Container maxWidth="lg">
+        <Box sx={{ textAlign: 'center', mb: 6 }}>
+          <Typography variant="h3" fontWeight={700} sx={{ mb: 2 }}>
+            Trusted by <Box component="span" color="primary.main">thousands</Box>
+          </Typography>
+          <Typography variant="h6" color="text.secondary">
+            Dont just take our word for it – hear what our users have to say about their experience.
+          </Typography>
+        </Box>
+        <Box display="flex" flexWrap="wrap" gap={4} justifyContent="center">
+            {testimonials.map((test, i) => (
+              <TestimonialCards key={i} {...test} />
+            ))}
+        </Box>
+      </Container>
+    </Box>
     </Box>
   );
 }
