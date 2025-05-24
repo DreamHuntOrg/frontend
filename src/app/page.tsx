@@ -5,6 +5,7 @@ import CompanyCard from "./components/CompanyCard";
 import AIMatchingCard from "./components/AiMatchCard";
 import TestimonialCards from "./components/TestimonialCards";
 import Footer from "./components/Footer"
+import Link from "next/link";
 
 
 export default function Home() {
@@ -65,6 +66,7 @@ export default function Home() {
             Connect skilled people with innovative companies through our consent-based matching platform.
           </Typography>
           <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
+            <Link href="/account/register">
             <Button 
               variant="contained" 
               color="primary" 
@@ -73,6 +75,8 @@ export default function Home() {
             >
               Create an account
             </Button>
+            </Link>
+            <Link href="/account/login">
             <Button 
               variant="outlined" 
               color="primary" 
@@ -81,6 +85,7 @@ export default function Home() {
             >
               Sign in
             </Button>
+            </Link>
           </Stack>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 4 }}>
             Trusted by 2,000+ users and 500+ companies
@@ -471,6 +476,7 @@ export default function Home() {
           justifyContent="center"
           sx={{ mb: 3 }}
         >
+          <Link href="/account/register">
           <Button
             variant="contained"
             color="primary"
@@ -487,6 +493,7 @@ export default function Home() {
           >
             Get started for free
           </Button>
+          </Link>
           <Button
             variant="outlined"
             color="primary"

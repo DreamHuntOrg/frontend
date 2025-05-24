@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { AppBar, Box, Button, Stack, Toolbar, Typography } from '@mui/material';
+import Link from 'next/link';
 
 
 const sections = [
@@ -63,8 +64,12 @@ const Navbar = () => {
                             {section.label}
                         </Button>
                     ))}
+                    <Link href="/account/login">
                     <Button color="inherit" variant='outlined' sx={{ ml: 2 }}>Log in</Button>
+                    </Link>
+                    <Link href="/account/register">
                     <Button color="primary" variant='contained' sx={{ borderRadius: 2 }}>Sign up</Button>
+                    </Link>
                 </Stack>
             </Toolbar>
         </AppBar>
