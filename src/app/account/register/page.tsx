@@ -54,10 +54,10 @@ export default function Register() {
               fontSize: 18,
             }}
           >
-            ANT
+            A
           </Avatar>
           <Typography variant="h6" fontWeight={700}>
-          Accelerated Nexus of Talent
+          Nexus of Talent
           </Typography>
         </Stack>
 

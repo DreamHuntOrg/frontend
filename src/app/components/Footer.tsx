@@ -44,7 +44,7 @@ export default function Footer() {
                   fontSize: 20,
                 }}
               >
-                JM
+                A
               </Avatar>
               <Typography variant="h6" fontWeight={700}>
                 Nexus of Talent
